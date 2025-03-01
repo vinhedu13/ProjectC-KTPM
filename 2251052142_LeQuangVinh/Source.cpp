@@ -14,12 +14,18 @@ bool isPrime(int number) {
     return true;
 }
 
+// Hàm kiểm tra năm nhuận
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
 // Hàm hiển thị menu
 void showMenu() {
     cout << "\n=== MENU ===" << endl;
     cout << "1. Kiem tra so nguyen to" << endl;
-    cout << "2. Thoat chuong trinh" << endl;
-    cout << "Chon chuc nang (1-2): ";
+    cout << "2. Kiem tra nam nhuan" << endl;
+    cout << "3. Thoat chuong trinh" << endl;
+    cout << "Chon chuc nang (1-3): ";
 }
 
 int main() {
@@ -47,13 +53,31 @@ int main() {
             }
             break;
         }
-        case 2:
+        case 2: {
+            int year;
+            cout << "Nhap mot nam: ";
+            cin >> year;
+
+            while (year <= 0) {
+                cout << "Vui long nhap nam duong lich (lon hon 0): ";
+                cin >> year;
+            }
+
+            if (isLeapYear(year)) {
+                cout << year << " la nam nhuan!" << endl;
+            }
+            else {
+                cout << year << " khong phai la nam nhuan!" << endl;
+            }
+            break;
+        }
+        case 3:
             cout << "Tam biet!" << endl;
             break;
         default:
             cout << "Lua chon khong hop le! Vui long chon lai." << endl;
         }
-    } while (choice != 2);
+    } while (choice != 3);
 
     return 0;
 }
